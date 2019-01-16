@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ic-api
+  namespace: staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ic-api
+  template:
+    metadata:
+      labels:
+        app: ic-api
+    spec:
+      containers:
+      - name: ic-api
+        image: michaeltcoelho/handson-k8s-api:staging-v1.0.0
+        ports:
+        - containerPort: 8001
+        env:
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: myapi-configmap
+              key: DEBUG
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: myapi-secrets
+              key: SECRET_KEY

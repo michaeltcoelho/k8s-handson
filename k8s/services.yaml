@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ic-api
+  namespace: staging
+spec:
+  selector:
+    app: ic-api
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8001
+    targetPort: 8001
+    nodePort: 30060
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ic-api
+  namespace: production
+spec:
+  selector:
+    app: ic-api
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8001
+    targetPort: 8001
+    nodePort: 30030
+  type: NodePort

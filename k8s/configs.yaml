@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myapi-configmap
+  namespace: staging
+data:
+  DEBUG: "1"
