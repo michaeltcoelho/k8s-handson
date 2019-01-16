@@ -39,18 +39,18 @@ apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
 ```
 
+#### Inicializando o Cluster
+
+```
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
 Liberando acesso ao usuário `ubuntu`:
 
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-```
-
-#### Inicializando o Cluster
-
-```
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
 #### Networking
